@@ -54,10 +54,10 @@ async def show_random_emojis(message):
     return emoji_message
     
 # Define the owner's user ID
-OWNER_ID =7660916897 # Replace with the actual owner's user ID
+OWNER_ID = 5840594311 # Replace with the actual owner's user ID
 
 # List of sudo users (initially empty or pre-populated)
-SUDO_USERS = [7660916897]
+SUDO_USERS = [5840594311]
 
 # ✅ Multiple AUTH CHANNELS allowed
 AUTH_CHANNELS = [-1002605113558,-1002663510614]  # Add more channel IDs here
@@ -568,18 +568,11 @@ async def upload(bot: Client, m: Message):
     await input6.delete(True)
     await editable.delete()
 
-    thumb = input6.text
-    if thumb.startswith("http://") or thumb.startswith("https://"):
-        getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-        thumb = "thumb.jpg"
-    else:
-        thumb == "no"
-    failed_count =0
-    if len(links) == 1:
-        count = 1
-    else:
-        count = int(raw_text)
-
+    #thumb = input6.text
+    #if thumb.startswith("http://") or thumb.startswith("https://"):
+        #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+        #thumb = "thumb.jpg"
+   
     try:
         for i in range(count - 1, len(links)):
             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
