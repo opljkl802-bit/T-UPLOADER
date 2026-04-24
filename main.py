@@ -872,20 +872,28 @@ async def upload(bot: Client, m: Message):
     await m.reply_text(f"<pre><code>📥𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤『{CR}』</code></pre>")
     await m.reply_text(f"<pre><code>『😏𝗥𝗲𝗮𝗰𝘁𝗶𝗼𝗻 𝗞𝗼𝗻 𝗗𝗲𝗴𝗮😏』</code></pre>")                 
 
-import asyncio
-from pyrogram import Client
-import os
-
-API_ID = int(os.environ.get("API_ID", ""))
-API_HASH = os.environ.get("API_HASH", "")
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-
-bot = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-
-async def main():
-    await bot.start()
-    print("Bot started successfully!")
-    await asyncio.Event().wait()  # keep running
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    print("""
+    █░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   
+    ▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█ """)
+
+    # Start the bot and web server concurrently
+    async def start_bot():
+        await bot.start()
+
+    async def start_web():
+        await main()
+
+    loop = asyncio.get_event_loop()
+    try:
+        # Create tasks to run bot and web server concurrently
+        loop.create_task(start_bot())
+    
+
+        # Keep the main thread running until all tasks are complete
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # Cleanup
+        loop.stop()
