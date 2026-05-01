@@ -572,13 +572,7 @@ async def upload(bot: Client, m: Message):
     #if thumb.startswith("http://") or thumb.startswith("https://"):
         #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         #thumb = "thumb.jpg"
-    else:
-        thumb == "no"
-    failed_count =0
-    if len(links) == 1:
-        count = 1
-    else:
-        count = int(raw_text)
+    
 
     try:
         for i in range(count - 1, len(links)):
