@@ -1,29 +1,18 @@
-# Use Python slim image
-FROM python:3.11-slim
+# Use a lightweight Python base image
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
 
-# System dependencies install
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    aria2 \
-    wget \
-    curl \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# Install system dependencies (if needed)
+RUN apt-get update && apt-get install -y gcc
 
-# Copy project files
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the bot files
 COPY . .
 
-# Upgrade pip
-RUN pip install --upgrade pip
-
-# Install Python dependencies
-RUN pip install -r requirements.txt
-
-# Expose port (for aiohttp web server)
-EXPOSE 10000
-
-# Run bot
+# Run the bot using only app.py
 CMD ["python3", "main.py"]
