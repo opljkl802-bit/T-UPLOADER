@@ -1,17 +1,29 @@
-FROM python:3.10-slim-bullseye
+# Use Python slim image
+FROM python:3.11-slim
 
+# Set working directory
+WORKDIR /app
 
-RUN apt-get update \
- && apt-get upgrade -y \
- && apt-get install -y --no-install-recommends gcc libffi-dev musl-dev ffmpeg aria2 python3-pip \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+# System dependencies install
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    aria2 \
+    wget \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
-WORKDIR /app/
-RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
-RUN pip install pytube
-ENV COOKIES_FILE_PATH="youtube_cookies.txt"
-CMD ["sh", "-c", "gunicorn app:app & python3 main.py"]
+# Copy project files
+COPY . .
 
+# Upgrade pip
+RUN pip install --upgrade pip
 
+# Install Python dependencies
+RUN pip install -r requirements.txt
+
+# Expose port (for aiohttp web server)
+EXPOSE 10000
+
+# Run bot
+CMD ["python3", "main.py"]
