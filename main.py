@@ -111,7 +111,7 @@ keyboard = InlineKeyboardMarkup(
                 [
                     InlineKeyboardButton("🇮🇳ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ🇮🇳" ,url=f"https://t.me/Tushar0125") ],
                     [
-                    InlineKeyboardButton("🔔ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ🔔" ,url="https://t.me/TxtToVideoUpdateChannel") ],
+                    ("🔔ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ🔔" ,url="https://t.me/TxtToVideoUpdateChannel") ],
                     [
                     InlineKeyboardButton("🦋ғᴏʟʟᴏᴡ ᴜs🦋" ,url="https://t.me/TxtToVideoUpdateChannel")                              
                 ],           
@@ -126,11 +126,7 @@ image_urls = [
     "https://graph.org/file/a5dcdc33020aa7a488590-79e02b5a397172cc35.jpg",
     "https://graph.org/file/0346106a432049e391181-7560294e8652f9d49d.jpg",
     "https://graph.org/file/ba49ebe9a8e387addbcdc-be34c4cd4432616699.jpg",
-    "https://graph.org/file/26f98dec8b3966687051f-557a430bf36b660e24.jpg",
-    "https://graph.org/file/2ae78907fa4bbf3160ffa-2d69cd23fa75cb0c3a.jpg",
-    "https://graph.org/file/05ef9478729f165809dd7-3df2f053d2842ed098.jpg",
-    "https://graph.org/file/b1330861fed21c4d7275c-0f95cca72c531382c1.jpg",
-    "https://graph.org/file/0ebb95807047b062e402a-9e670a0821d74e3306.jpg",
+    "https://graph.org/file/26f98d047b062e402a-9e670a0821d74e3306.jpg",
     "https://graph.org/file/b4e5cfd4932d154ad6178-7559c5266426c0a399.jpg",
     "https://graph.org/file/44ffab363c1a2647989bc-00e22c1e36a9fd4156.jpg",
     "https://graph.org/file/5f0980969b54bb13f2a8a-a3e131c00c81c19582.jpg",
@@ -172,9 +168,7 @@ async def restart_handler(_, m):
 
 COOKIES_FILE_PATH = "youtube_cookies.txt"
 
-@bot.on_message(filters.command("cookies") & filters.private)
-async def cookies_handler(client: Client, m: Message):
-    if not is_authorized(m.from_user.id):
+@bot.on_messagrom_user.id):
         await m.reply_text("🚫 You are not authorized to use this command.")
         return
     """
@@ -259,10 +253,7 @@ async def edit_txt(client, message: Message):
     else:
         final_file_name = file_name  # Default to the uploaded file name
 
-    # Read and process the uploaded file
-    try:
-        with open(uploaded_file, 'r', encoding='utf-8') as f:
-            content = f.readlines()
+    # Rea= f.readlines()
     except Exception as e:
         await message.reply_text(f"🚨 **Error**: Unable to read the file.\n\nDetails: {e}")
         return
@@ -352,8 +343,7 @@ def get_videos_with_ytdlp(url):
             if 'entries' in result:
                 title = result.get('title', 'Unknown Title')
                 videos = {}
-                for entry in result['entries']:
-                    video_url = entry.get('url', None)
+                for enrl = entry.get('url', None)
                     video_title = entry.get('title', None)
                     if video_url:
                         videos[video_title if video_title else "Unknown Title"] = video_url
@@ -405,10 +395,7 @@ async def ytplaylist_to_txt(client: Client, message: Message):
             document=file_name, 
             caption=f"`{title}`\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤ 🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋"
         )
-        os.remove(file_name)
-    else:
-        await message.reply_text("⚠️ **Unable to retrieve videos. Please check the URL.**")
-
+        os.remove(fil
         
 # List users command
 @bot.on_message(filters.command("userlist") & filters.user(SUDO_USERS))
@@ -452,7 +439,7 @@ async def upload(bot: Client, m: Message):
     file_name, ext = os.path.splitext(os.path.basename(x))
     pdf_count = 0
     img_count = 0
-    zip_count = 0
+    ziount = 0
     video_count = 0
     
     try:    
@@ -506,8 +493,7 @@ async def upload(bot: Client, m: Message):
             res = "256x144"
         elif raw_text2 == "240":
             res = "426x240"
-        elif raw_text2 == "360":
-            res = "640x360"
+        elif r = "640x360"
         elif raw_text2 == "480":
             res = "854x480"
         elif raw_text2 == "720":
@@ -582,11 +568,7 @@ async def upload(bot: Client, m: Message):
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
                         
             elif 'media-cdn.classplusapp.com/drm/' in url:
-                url = f"https://dragoapi.vercel.app/video/{url}"
-
-            elif 'videos.classplusapp' in url:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-             url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9'}).json()['url']                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                url = f"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
             elif "tencdn.classplusapp" in url or "media-cdn-alisg.classplusapp.com" in url or "videos.classplusapp" in url or "media-cdn.classplusapp" in url:
              headers = {'Host': 'api.classplusapp.com', 'x-access-token': 'eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9', 'user-agent': 'Mobile-Android', 'app-version': '1.4.37.1', 'api-version': '18', 'device-id': '5d0d17ac8b3c9f51', 'device-details': '2848b866799971ca_2848b8667a33216c_SDK-30', 'accept-encoding': 'gzip'}
              params = (('url', f'{url}'),)
@@ -667,11 +649,7 @@ async def upload(bot: Client, m: Message):
 
             try:  
                 cc = f'**[🎬] 𝗩𝗶𝗱_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.({res}).𝔗𝔲𝔰𝔥𝔞𝔯.mkv\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
-                #cpw = f'**[🎬] 𝗩𝗶𝗱_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.({res}).𝔗𝔲𝔰𝔥𝔞𝔯.mkv\n\n\n🔗𝗩𝗶𝗱𝗲𝗼 𝗨𝗿𝗹 ➤ <a href="{url}">__Click Here to Watch Video__</a>\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  {CR}**'
-                #cyt = f'**[🎬] 𝗩𝗶𝗱_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.({res}).𝔗𝔲𝔰𝔥𝔞𝔯.mp4\n\n\n🔗𝗩𝗶𝗱𝗲𝗼 𝗨𝗿𝗹 ➤ <a href="{url}">__Click Here to Watch Video__</a>\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  {CR}**'
-                cpvod = f'**[🎬] 𝗩𝗶𝗱_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.({res}).𝔗𝔲𝔰𝔥𝔞𝔯.mkv\n\n\n🔗𝗩𝗶𝗱𝗲𝗼 𝗨𝗿𝗹 ➤ <a href="{url}">__Click Here to Watch Video__</a>\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
-                cimg = f'**[📁] 𝗜𝗺𝗴_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.𝔗𝔲𝔰𝔥𝔞𝔯.jpg\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
-                cczip = f'**[📁] 𝗣𝗱𝗳_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.𝔗𝔲𝔰𝔥𝔞𝔯.zip\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
+                #cpw = f'**[🎬] 𝗩𝗶𝗱_𝗜𝗱 : {str(count).zfill(str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.𝔗𝔲𝔰𝔥𝔞𝔯.zip\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
                 cc1 = f'**[📁] 𝗣𝗱𝗳_𝗜𝗱 : {str(count).zfill(3)}.\n\n\n☘️𝗧𝗶𝘁𝗹𝗲 𝗡𝗮𝗺𝗲 ➤ {name1}.𝔗𝔲𝔰𝔥𝔞𝔯.pdf\n\n\n<pre><code>📚𝗕𝗮𝘁𝗰𝗵 𝗡𝗮𝗺𝗲 ➤ {b_name}</code></pre>\n\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤  🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋**'
           
                 if "drive" in url:
@@ -701,8 +679,7 @@ async def upload(bot: Client, m: Message):
         # Check if the response status is OK
                         if response.status_code == 200:
             # Write the PDF content to a file
-                            with open(f'{name}.pdf', 'wb') as file:
-                                file.write(response.content)
+                           write(response.content)
 
             # Send the PDF document
                             await asyncio.sleep(4)
