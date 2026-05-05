@@ -850,6 +850,25 @@ async def upload(bot: Client, m: Message):
     await m.reply_text(f"<pre><code>📥𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤『🦋⁂༄𒆜𝗣𝗨𝗕𝗭𝗘𝖫𝖮𒆜༄⁂🦋』</code></pre>")
     await m.reply_text(f"<pre><code>『😏𝗥𝗲𝗮𝗰𝘁𝗶𝗼𝗻 𝗞𝗼𝗻 𝗗𝗲𝗴𝗮😏』</code></pre>")                 
 
-bot.run()
+from aiohttp import web
+
+async def handle(request):
+    return web.Response(text="Bot is running")
+
+app = web.Application()
+app.router.add_get('/', handle)
+
+async def start_bot_and_server():
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", int(os.environ.get("PORT", 10000)))
+    await site.start()
+    
+    await bot.start()
+    print("Bot started")
+
+    while True:
+        await asyncio.sleep(3600)
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(start_bot_and_server())
